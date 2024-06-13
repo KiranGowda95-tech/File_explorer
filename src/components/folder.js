@@ -5,7 +5,7 @@ function Folder({ explorer }) {
 
   if (explorer.isFolder) {
     return (
-      <div style={{ marginTop: 10 }}>
+      <div style={{ marginTop: 5 }}>
         <div
           className='folder'
           onClick={() => {
