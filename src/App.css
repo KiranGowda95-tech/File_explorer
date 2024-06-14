@@ -18,3 +18,18 @@
   display: flex;
   flex-direction: column;
 }
+
+.folder > div > button {
+  font-size: 15px;
+  background-color: aqua;
+}
+
+.inputContainer__input {
+  margin: 6px 0px 0px 0px;
+  padding: 5px;
+  display: flex;
+  border: 1px solid lightgrey;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
