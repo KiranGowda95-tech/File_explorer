@@ -1,5 +1,5 @@
 import { useState } from 'react';
-function Folder({ explorer }) {
+function Folder({ handleInsertNode, explorer }) {
   console.log('from folder file', explorer);
   const [expand, setExpand] = useState(false);
 
@@ -15,6 +15,14 @@ function Folder({ explorer }) {
       visible: true,
       isFolder,
     });
+  };
+
+  const onAddFolder = (e) => {
+    if (e.keyCode === 13 && e.target.value) {
+      //add logic
+      handleInsertNode(explorer.id, e.target.value, showInputs.isFolder);
+      setShowInput({ ...showInputs, visible: false });
+    }
   };
 
   if (explorer.isFolder) {
@@ -38,6 +46,7 @@ function Folder({ explorer }) {
               <span>{showInputs.isFolder ? '📂' : '📄'}</span>
               <input
                 type='text'
+                onKeyDown={onAddFolder}
                 onBlur={() => setShowInput({ ...showInputs, visible: false })}
                 className='inputContainer__input'
                 autoFocus
@@ -47,7 +56,11 @@ function Folder({ explorer }) {
           {explorer.items.map((exp) => {
             return (
               <span className='file'>
-                <Folder explorer={exp} key={exp.id} />
+                <Folder
+                  handleInsertNode={handleInsertNode}
+                  explorer={exp}
+                  key={exp.id}
+                />
               </span>
             );
           })}
